@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#000000" />
+    <title>Fluid Engine</title>
+  </head>
+  <body>
+    <canvas id="fluid"></canvas>
+
+    <div id="hud" class="hud">
+      <div class="hud-title">FLUID<span>ENGINE</span></div>
+      <div id="hud-stats" class="hud-stats"></div>
+      <div class="hud-keys">
+        <span><kbd>drag</kbd> paint</span>
+        <span><kbd>space</kbd> burst</span>
+        <span><kbd>T</kbd> text</span>
+        <span><kbd>C</kbd> palette</span>
+        <span><kbd>A</kbd> advection</span>
+        <span><kbd>M</kbd> tonemap</span>
+        <span><kbd>P</kbd> pause</span>
+        <span><kbd>R</kbd> clear</span>
+        <span><kbd>S</kbd> capture</span>
+        <span><kbd>H</kbd> hide</span>
+      </div>
+      <div class="hud-touch">drag to paint &middot; double-tap to burst</div>
+    </div>
+
+    <div id="toast" class="toast" aria-live="polite"></div>
+
+    <div id="fallback" class="fallback" hidden>
+      <p>This needs WebGL2 with float render targets.</p>
+      <p id="fallback-detail" class="fallback-detail"></p>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

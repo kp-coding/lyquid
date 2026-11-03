@@ -1,0 +1,127 @@
+:root {
+  color-scheme: dark;
+  --fg: rgba(236, 238, 245, 0.92);
+  --dim: rgba(236, 238, 245, 0.42);
+  --mono: ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, Consolas, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+}
+
+#fluid {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: none;
+  cursor: crosshair;
+}
+
+.hud {
+  position: fixed;
+  left: max(20px, env(safe-area-inset-left));
+  bottom: max(18px, env(safe-area-inset-bottom));
+  max-width: calc(100vw - 40px);
+  font: 500 11px/1.7 var(--mono);
+  letter-spacing: 0.04em;
+  color: var(--dim);
+  pointer-events: none;
+  user-select: none;
+  transition: opacity 0.8s ease;
+}
+
+.hud.idle {
+  opacity: 0.12;
+}
+
+.hud.hidden {
+  opacity: 0;
+}
+
+.hud-title {
+  color: var(--fg);
+  font-weight: 600;
+  letter-spacing: 0.34em;
+  margin-bottom: 2px;
+}
+
+.hud-title span {
+  color: var(--dim);
+  margin-left: 0.7em;
+}
+
+.hud-keys {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 14px;
+  margin-top: 6px;
+}
+
+.hud-touch {
+  display: none;
+  margin-top: 6px;
+}
+
+kbd {
+  font: inherit;
+  color: var(--fg);
+}
+
+@media (pointer: coarse) {
+  .hud-keys {
+    display: none;
+  }
+  .hud-touch {
+    display: block;
+  }
+}
+
+.toast {
+  position: fixed;
+  top: max(22px, env(safe-area-inset-top));
+  left: 50%;
+  transform: translate(-50%, -6px);
+  font: 600 11px/1 var(--mono);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--fg);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  white-space: nowrap;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.fallback {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  padding: 24px;
+  text-align: center;
+  font: 500 13px/1.6 var(--mono);
+  color: var(--fg);
+}
+
+.fallback[hidden] {
+  display: none;
+}
+
+.fallback-detail {
+  color: var(--dim);
+  max-width: 48ch;
+}
